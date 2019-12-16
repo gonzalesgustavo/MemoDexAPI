@@ -12,7 +12,6 @@ async function main() {
     //init database connection
     await DBConnector.connect();
 
-
     //routes
     const websiteHandler = require('./API/websites');
     const contactHandler = require('./API/contacts');
