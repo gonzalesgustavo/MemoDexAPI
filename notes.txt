@@ -1,0 +1,42 @@
+Db Model:
+    - Websites:
+        url -> String
+        type -> String
+        emailUsed -> String (email validation)
+        pwdHint -> String
+    - Contacts:
+        firstName -> String
+        lastName -> String
+        relationship -> String
+        notes -> String
+        contact: {
+            email -> String (email validation)
+            mobile -> String
+            work -> String
+            home -> String
+            twitter -> String
+            facebook -> String
+            instagram -> String
+        }
+    - Notes:
+        text -> String
+        date -> Date 
+        tags -> Array
+    - Users:
+        name -> String
+        email -> String (email validation)
+        username -> String
+        pwd -> String (Encrypted)
+
+To-Do:
+
+    [ x ] Initial Setup
+    [ x ] Setup basic server
+    [  ] Setup API routes
+    [  ] Setup controllers
+    [  ] Link controllers to routes
+    [  ] Setup Models
+    [  ] Link models to controllers
+    [  ] Create Database
+    [  ] Impliment Database in models
+    [  ] Test routes
