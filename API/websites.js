@@ -1,13 +1,21 @@
 const router = require('express').Router();
 
-router.get('/')
+const {
+    getWebsite,
+    getWebsites,
+    addWebsite,
+    updateWebsite,
+    removeWebsite
+} = require('../controllers/websites.controller');
 
-router.get('/:id')
+router.get('/', getWebsites);
 
-router.post('/add')
+router.get('/:id', getWebsite);
 
-router.patch('/update/:id')
+router.post('/add', addWebsite);
 
-router.delete('/delete/:id')
+router.patch('/update/:id', updateWebsite);
+
+router.delete('/delete/:id', removeWebsite);
 
 module.exports = router;

@@ -1,9 +1,11 @@
 const router = require('express').Router();
 
-router.post('/login')
+const { login, register, unRegister } = require('../controllers/users.controller');
 
-router.post('/register')
+router.post('/login', login);
 
-router.delete('/unregister')
+router.post('/register', register);
+
+router.delete('/unregister', unRegister);
 
 module.exports = router;

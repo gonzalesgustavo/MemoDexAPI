@@ -32,9 +32,9 @@ To-Do:
 
     [ x ] Initial Setup
     [ x ] Setup basic server
-    [  ] Setup API routes
-    [  ] Setup controllers
-    [  ] Link controllers to routes
+    [ x ] Setup API routes
+    [ x ] Setup controllers
+    [ x ] Link controllers to routes
     [  ] Setup Models
     [  ] Link models to controllers
     [  ] Create Database
