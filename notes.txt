@@ -17,7 +17,9 @@ Db Model:
             home -> String
             twitter -> String
             facebook -> String
+            linkedin -. String
             instagram -> String
+            website -> String
         }
     - Notes:
         text -> String
