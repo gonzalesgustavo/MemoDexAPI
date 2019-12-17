@@ -38,11 +38,13 @@ To-Do:
     [ x ] Setup API routes
     [ x ] Setup controllers
     [ x ] Link controllers to routes
-    [  ] Setup Models
-    [  ] Link models to controllers
-    [  ] Create Database
-    [  ] Impliment Database in models
+    [ x ] Create Database
+    [ x ] Impliment Database in Controllers using Models
+    [ x ] Setup Models
+    [ x ] Link models to controllers
+    [ x ] Setup responses
     [  ] Test routes
+    [  ] Add comments
 
 mongo db container id:
 89622ad01520
