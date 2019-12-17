@@ -3,6 +3,7 @@ Db Model:
         url -> String
         type -> String
         emailUsed -> String (email validation)
+        usernameUsed -> String
         pwdHint -> String
     - Contacts:
         firstName -> String

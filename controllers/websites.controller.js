@@ -33,7 +33,15 @@ const addWebsite = async (req, res, next) => {
 }
 
 const updateWebsite = (req, res, next) => {
-    res.status(200).end();
+    try {
+        const id = req.params.id;
+        const body = req.body;
+        const upd8tedWebsite = await Websites.findByIdAndUpdate({ _id: id }, { $set: body });
+        res.status(200).json({ results: upd8tedWebsite });
+    } catch (error) {
+        console.log(error);
+        res.status(400).end();
+    }
 }
 
 const removeWebsite = async (req, res, next) => {
