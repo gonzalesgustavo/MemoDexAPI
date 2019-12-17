@@ -9,7 +9,6 @@ const test = async (req, res, next) => {
     }
 }
 
-
 const login = async (req, res, next) => {
     try {
         const { username, password } = req.body;
