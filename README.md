@@ -17,23 +17,26 @@ If you get an error that is not obvious please check route specific required fie
 **Users**
 
 
-**Notes**
+## Notes
 
-/membank/api/notes METHOD:GET
+| URL | METHOD |
+| ------------------ | -------- |
+| /membank/api/notes | GET |
+| /membank/api/notes/:id | GET|
+| /membank/api/notes/add | POST |
+| /membank/api/notes/update/:id | PATCH |
+| /membank/api/notes/remove/:id | DELETE |
 
-/membank/api/notes/:id METHOD:GET
+| Required | Optional |
+| --- | --- |
+| text | N/A |
 
-Sample Query String:
+_**Sample Query String:**_
 
-http://www.memodex.com/membank/api/notes/5dfaab5d530e4c0e76f48f6b
+> http://www.memodex.com/membank/api/notes/5dfaab5d530e4c0e76f48f6b
 
-/membank/api/notes/add METHOD:POST
 
-Required Fields:
-
-* text
-
-Sample JSON Payload:
+**Sample JSON Payload:**
 
 ```json
 {
@@ -41,44 +44,28 @@ Sample JSON Payload:
 }
 ```
 
-/membank/api/notes/update/:id METHOD:PATCH
+## Websites
 
-Sample Query String:
+| URL | METHOD |
+| ------------------ | -------- |
+| /membank/api/websites | GET |
+| /membank/api/websites/:id | GET|
+| /membank/api/websites/add | POST |
+| /membank/api/websites/update/:id | PATCH |
+| /membank/api/websites/remove/:id | DELETE |
 
-membank/api/notes/update/5dfa98c0afa71168f206df1b
+| Required | Optional |
+| --- | --- |
+| name | shopType |
+| url | emailUsed |
+| - | usernameUsed |
+| - | pwdHint |
 
-Sample Body:
+_**Sample Query String:**_
 
-```json
-{
-	"text": "Frank called on 12/10/24"
-}
-```
-/membank/api/notes/update/:id METHOD:PATCH
+> http://www.memodex.com/membank/api/websites/5dfaab5d530e4c0e76f48f6b
 
-Sample Query String:
-
-/membank/api/notes/remove/:id METHOD:PATCH
-
-
-**Websites**
-
-/membank/api/websites  METHOD:GET
-
-/membank/api/websites/:id  METHOD:GET
-
-Sample Query String:
-
-http://www.memodex.com/membank/api/websites/5dfa990c25265b6a3adc361a
-
-/membank/api/websites/add  METHOD:POST
-
-Required Fields:
-
-* name
-* url
-
-Sample JSON Payload:
+**Sample JSON Payload:**
 
 ```json
 {
@@ -92,25 +79,6 @@ Sample JSON Payload:
 
 ```
 
-membank/api/websites/remove/:id METHOD:DELETE
-
-Sample Query String:
-
-membank/api/websites/remove/5dfa98c0afa71168f206df1b
-
-/membank/api/websites/update/:id  METHOD:PATCH
-
-Sample Query String:
-
-membank/api/websites/update/5dfa98c0afa71168f206df1b
-
-```json
-{
-	"url": "http://www.google.com",
-	"type": "Fast Search Engine",
-	"emailUsed": "new.example@gmail.com",
-}
-```
 
 ---
 
