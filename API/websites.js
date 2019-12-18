@@ -16,6 +16,6 @@ router.post('/add', addWebsite);
 
 router.patch('/update/:id', updateWebsite);
 
-router.delete('/delete/:id', removeWebsite);
+router.delete('/remove/:id', removeWebsite);
 
 module.exports = router;

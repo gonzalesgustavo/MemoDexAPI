@@ -11,7 +11,7 @@ const getNotes = async (req, res, next) => {
     }
 }
 
-const getNote = (req, res, next) => {
+const getNote = async (req, res, next) => {
     try {
         const note = await Note.findById({ _id: req.params.id });
         res.status(200).json({ results: note });
@@ -21,7 +21,7 @@ const getNote = (req, res, next) => {
     }
 }
 
-const addNote = (req, res, next) => {
+const addNote = async (req, res, next) => {
     try {
         const { text, tags } = req.body;
         const tagArray = ToArray(tags);
@@ -34,7 +34,7 @@ const addNote = (req, res, next) => {
     }
 }
 
-const updateNote = (req, res, next) => {
+const updateNote = async (req, res, next) => {
     try {
         const id = req.params.id;
         const body = req.body;
@@ -46,7 +46,7 @@ const updateNote = (req, res, next) => {
     }
 }
 
-const removeNote = (req, res, next) => {
+const removeNote = async (req, res, next) => {
     try {
         const id = req.params.id;
         const data = await Note.findByIdAndDelete({ _id: id });

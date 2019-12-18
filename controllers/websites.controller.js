@@ -1,46 +1,50 @@
 const Websites = require('../models/Websites');
+const Response = require('../Utils/ResponseBuilder');
 
 const getWebsites = async (req, res, next) => {
     try {
         const websites = await Websites.find({}).limit(10);
-        res.status(200).json({ results: websites });
+        const response = Response.success("limit of 10 websites returned", websites);
+        res.status(200).json(response);
     } catch (error) {
-        console.log(error);
-        res.status(400).end();
+        const response = Response.failed(error, 500);
+        res.status(500).json(response);
     }
 }
 
 const getWebsite = async (req, res, next) => {
     try {
         const website = await Websites.findById({ _id: req.params.id });
-        res.status(200).json({ results: website });
+        const response = Response.success("Website added", [website]);
+        res.status(200).json(response);
     } catch (error) {
-        console.log(error);
-        res.status(400).end();
+        const response = Response.failed(error, 400);
+        res.status(400).json(response);
     }
 }
 
 const addWebsite = async (req, res, next) => {
     try {
-        const { url, type, emailUsed, username, pwdHint } = req.body;
-        const websiteAdded = new Websites({ url, type, emailUsed, username, pwdHint });
+        const websiteAdded = new Websites({ ...req.body });
         const website = await websiteAdded.save();
-        res.status(200).json({ results: website });
+        const response = Response.success("Website added", [website]);
+        res.status(200).json(response);
     } catch (error) {
-        console.log(error);
-        res.status(400).end();
+        const response = Response.failed(error, 406);
+        res.status(406).json(response);
     }
 }
 
-const updateWebsite = (req, res, next) => {
+const updateWebsite = async (req, res, next) => {
     try {
         const id = req.params.id;
         const body = req.body;
         const upd8tedWebsite = await Websites.findByIdAndUpdate({ _id: id }, { $set: body });
-        res.status(200).json({ results: upd8tedWebsite });
+        const response = Response.success("Website added", [upd8tedWebsite]);
+        res.status(200).json(response);
     } catch (error) {
-        console.log(error);
-        res.status(400).end();
+        const response = Response.failed(error, 406);
+        res.status(406).json(response);
     }
 }
 
@@ -50,8 +54,8 @@ const removeWebsite = async (req, res, next) => {
         const data = await Websites.findByIdAndDelete({ _id: id });
         res.status(204).end();
     } catch (error) {
-        console.log(error);
-        res.status(400).json({ results: error })
+        const response = Response.failed(error, 406);
+        res.status(406).json(response);
     }
 }
 

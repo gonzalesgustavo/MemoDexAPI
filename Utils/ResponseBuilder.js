@@ -1,29 +1,27 @@
-
+const ObjBulder = require('./ObjectBuilder');
 const generalErrorMessage = "Possible server error or id/data failed to meet API criteria please refer to the documentation for route specific requirements";
 
-module.exports = class Response {
-    static success(message, status, data, success) {
+class Response {
+    static build(success, msg, status, res, resLimit = 10) {
         return {
             success,
-            message,
+            resultLimit: resLimit,
+            resultCount: !success ? null : res.length,
+            message: msg,
             status,
-            result: data
+            results: res
         }
+    }
+}
+
+
+module.exports = class ResponseBuilder {
+    static success(message, data, amount = 10) {
+        let parser = new ObjBulder();
+        let results = parser.parse(data);
+        return Response.build(true, message, 200, results);
     }
     static failed(error, statusCode = 404, message = generalErrorMessage) {
-        return {
-            success: false,
-            message,
-            status: statusCode,
-            result: error
-        }
-    }
-    static noContent(caller) {
-        return {
-            success: true,
-            message: `${caller} was removed successfully`,
-            status: 200,
-            result: null
-        }
+        return Response.build(false, message, statusCode, `${error}`, null);
     }
 }
