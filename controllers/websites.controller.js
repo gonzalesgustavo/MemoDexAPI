@@ -14,12 +14,13 @@ const getWebsites = async (req, res, next) => {
 
 const getWebsite = async (req, res, next) => {
     try {
-        const website = await Websites.findById({ _id: req.params.id });
-        const response = Response.success("Website added", [website]);
+        const id = req.params.id;
+        const website = await Websites.findById({ _id: id });
+        const response = Response.success(`Success, website with id ${id} found`, [website]);
         res.status(200).json(response);
     } catch (error) {
-        const response = Response.failed(error, 400);
-        res.status(400).json(response);
+        const response = Response.failed(error, 500);
+        res.status(500).json(response);
     }
 }
 
@@ -40,7 +41,7 @@ const updateWebsite = async (req, res, next) => {
         const id = req.params.id;
         const body = req.body;
         const upd8tedWebsite = await Websites.findByIdAndUpdate({ _id: id }, { $set: body });
-        const response = Response.success("Website added", [upd8tedWebsite]);
+        const response = Response.success(`Website with id ${id} updated`, [upd8tedWebsite]);
         res.status(200).json(response);
     } catch (error) {
         const response = Response.failed(error, 406);

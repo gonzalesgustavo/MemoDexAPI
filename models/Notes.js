@@ -19,8 +19,7 @@ const NoteSchema = new Schema({
     date: {
         type: String,
         default: getDate()
-    },
-    tags: Array
+    }
 });
 
 module.exports = mongoose.model('Note', NoteSchema);

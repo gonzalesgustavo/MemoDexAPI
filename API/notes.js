@@ -16,6 +16,6 @@ router.post('/add', addNote);
 
 router.patch('/update/:id', updateNote);
 
-router.delete('/delete/:id', removeNote);
+router.delete('/remove/:id', removeNote);
 
 module.exports = router; 

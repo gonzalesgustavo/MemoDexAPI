@@ -4,13 +4,56 @@
 
 **Description**
 
-Backend API for the MemoDex Application
+Backend API for the MemoDex Applications
 
 ---
 
 ## Routes
 
 ---
+
+**Users**
+
+
+**Notes**
+
+/membank/api/notes METHOD:GET
+
+/membank/api/notes/:id METHOD:GET
+
+Sample Query String:
+
+http://www.memodex.com/membank/api/notes/5dfaab5d530e4c0e76f48f6b
+
+/membank/api/notes/add METHOD:POST
+
+Sample JSON Payload:
+
+```json
+{
+	"text": "Frank called on 12/16/24"
+}
+```
+
+/membank/api/notes/update/:id METHOD:PATCH
+
+Sample Query String:
+
+membank/api/notes/update/5dfa98c0afa71168f206df1b
+
+Sample Body:
+
+```json
+{
+	"text": "Frank called on 12/10/24"
+}
+```
+/membank/api/notes/update/:id METHOD:PATCH
+
+Sample Query String:
+
+/membank/api/notes/remove/:id METHOD:PATCH
+
 
 **Websites**
 
@@ -38,20 +81,25 @@ Sample JSON Payload:
 
 ```
 
-
-/membank/api/notes/:id METHOD:PATCH
-
-```javascript
-// must pass note tags as a array
-["sample tag", "Sample Tag", "Added Tag"]
-
-```
-
 membank/api/websites/remove/:id METHOD:DELETE
 
 Sample Query String:
 
 membank/api/websites/remove/5dfa98c0afa71168f206df1b
+
+/membank/api/websites/update/:id  METHOD:PATCH
+
+Sample Query String:
+
+membank/api/websites/update/5dfa98c0afa71168f206df1b
+
+```json
+{
+	"url": "http://www.google.com",
+	"type": "Fast Search Engine",
+	"emailUsed": "new.example@gmail.com",
+}
+```
 
 ---
 

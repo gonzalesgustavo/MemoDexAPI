@@ -1,36 +1,39 @@
 const Note = require('../models/Notes');
-const ToArray = require('../Utils/ArrayBuilder');
+const Response = require('../Utils/ResponseBuilder');
 
 const getNotes = async (req, res, next) => {
     try {
         const notes = await Note.find({}).limit(10);
-        res.status(200).json({ results: notes });
+        const response = Response.success("limit of 10 notes", notes);
+        res.status(200).json(response);
     } catch (error) {
-        console.log(error);
-        res.status(400).end();
+        const response = Response.failed(error, 500);
+        res.status(500).json(response);
     }
 }
 
 const getNote = async (req, res, next) => {
     try {
-        const note = await Note.findById({ _id: req.params.id });
-        res.status(200).json({ results: note });
+        const id = req.params.id;
+        const note = await Note.findById({ _id: id });
+        const response = Response.success(`Success, note with id ${id} found`, [note]);
+        res.status(200).json(response);
     } catch (error) {
-        console.log(error);
-        res.status(400).end();
+        const response = Response.failed(error, 500);
+        res.status(500).json(response);
     }
 }
 
 const addNote = async (req, res, next) => {
     try {
-        const { text, tags } = req.body;
-        const tagArray = ToArray(tags);
-        const noteAdded = new Websites({ text, tagArray });
+        const { text } = req.body;
+        const noteAdded = new Note({ text });
         const note = await noteAdded.save();
-        res.status(200).json({ results: note });
+        const response = Response.success("Note added", [note]);
+        res.status(200).json(response);
     } catch (error) {
-        console.log(error);
-        res.status(400).end();
+        const response = Response.failed(error, 406);
+        res.status(406).json(response);
     }
 }
 
@@ -39,10 +42,11 @@ const updateNote = async (req, res, next) => {
         const id = req.params.id;
         const body = req.body;
         const upd8tedNote = await Note.findByIdAndUpdate({ _id: id }, { $set: body });
-        res.status(200).json({ results: upd8tedNote });
+        const response = Response.success(`Note with id ${id} updated`, [upd8tedNote]);
+        res.status(200).json(response);
     } catch (error) {
-        console.log(error);
-        res.status(400).end();
+        const response = Response.failed(error, 406);
+        res.status(406).json(response);
     }
 }
 
@@ -52,8 +56,8 @@ const removeNote = async (req, res, next) => {
         const data = await Note.findByIdAndDelete({ _id: id });
         res.status(204).end();
     } catch (error) {
-        console.log(error);
-        res.status(400).json({ results: error })
+        const response = Response.failed(error, 406);
+        res.status(406).json(response);
     }
 }
 
