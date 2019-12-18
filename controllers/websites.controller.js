@@ -4,7 +4,7 @@ const Response = require('../Utils/ResponseBuilder');
 const getWebsites = async (req, res, next) => {
     try {
         const websites = await Websites.find({}).limit(10);
-        const response = Response.success("limit of 10 websites returned", websites);
+        const response = Response.success("limit of 10 websites", websites);
         res.status(200).json(response);
     } catch (error) {
         const response = Response.failed(error, 500);

@@ -4,7 +4,9 @@
 
 **Description**
 
-Backend API for the MemoDex Applications
+Backend API for the MemoDex Applications.
+
+If you get an error that is not obvious please check route specific required fields, more than likely there is a few required fields that did not meet the model criteria. 
 
 ---
 
@@ -26,6 +28,10 @@ Sample Query String:
 http://www.memodex.com/membank/api/notes/5dfaab5d530e4c0e76f48f6b
 
 /membank/api/notes/add METHOD:POST
+
+Required Fields:
+
+* text
 
 Sample JSON Payload:
 
@@ -66,6 +72,11 @@ Sample Query String:
 http://www.memodex.com/membank/api/websites/5dfa990c25265b6a3adc361a
 
 /membank/api/websites/add  METHOD:POST
+
+Required Fields:
+
+* name
+* url
 
 Sample JSON Payload:
 
