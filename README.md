@@ -78,6 +78,55 @@ _**Sample Query String:**_
 }
 
 ```
+## Contacts
+
+| URL | METHOD |
+| ------------------ | -------- |
+| /membank/api/contacts | GET |
+| /membank/api/contacts/:id | GET|
+| /membank/api/contacts/add | POST |
+| /membank/api/contacts/update/:id | PATCH |
+| /membank/api/contacts/remove/:id | DELETE |
+
+| Optional | Required |
+| --- | --- |
+| notes | firstName |
+| email | lastName |
+| mobile | usernameUsed |
+| work | - |
+| home | - |
+| relationship | - |
+| twitter | - |
+| facebook | - |
+| linkedin | - |
+| instagram | - |
+| website | - |
+
+
+_**Sample Query String:**_
+
+> http://www.memodex.com/membank/api/contacts/5dfaab5d530e4c0e76f48f6b
+
+**Sample JSON Payload:**
+
+```json
+{
+	"firstName": "Mark",
+	"lastName": "Doe",
+	"relationship": "Friend",
+	"notes": "Met at code connect",
+	"email": "markdoe@example.com",
+	"mobile": "000-000-0000",
+	"work": "000-000-0000",
+	"home": "000-000-0000",
+	"twitter": "@markdoe19778",
+	"facebook": "markdoe19778",
+	"linkedin": "doemark19778",
+	"instagram": "#doemark78",
+	"website" : "www.doeexamplemark.com"
+}
+
+```
 
 
 ---
@@ -143,6 +192,7 @@ Here is a Sample error resonse:
 
 * Removed Mongodb and switched to Mongoose 
 * Docker container holds MongoDb
+* Changed look of Routes in Readme file
 
 ---
 

@@ -16,6 +16,6 @@ router.post('/add', addContact);
 
 router.patch('/update/:id', updateContact);
 
-router.delete('/delete/:id', removeContact);
+router.delete('/remove/:id', removeContact);
 
 module.exports = router; 

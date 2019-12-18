@@ -27,7 +27,8 @@ const ContactSchema = new Schema({
         email: {
             type: String,
             min: 10,
-            max: 50
+            max: 50,
+            match: /^[A-Za-z0-9]+@[A-Za-z0-9]+\.[A-Za-z0-9]+$/
         },
         mobile: {
             type: String,
