@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const WebsitesSchema = new Schema({
+    userId: {
+        type: String,
+        required: true
+    },
     name: {
         type: String,
         unique: true,
@@ -10,7 +14,6 @@ const WebsitesSchema = new Schema({
     url: {
         type: String,
         min: 3,
-        unique: true,
         required: true
     },
     shopType: String,

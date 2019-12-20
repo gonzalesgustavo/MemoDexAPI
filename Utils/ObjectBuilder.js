@@ -11,7 +11,7 @@ class ObjBuilder {
     unpack(data) {
         let str = '';
         for (let i in data) {
-            if (i !== '__v') {
+            if (i !== '__v' && i !== 'userId') {
                 if (typeof data[i] === "number") {
                     str += `"${i}":${data[i]},`
                 } else if (typeof data[i] === "object") {

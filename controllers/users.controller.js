@@ -17,9 +17,10 @@ const login = async (req, res, next) => {
         const { username, password } = req.body;
         const user = await User.find({ username: username })
         if (user[0].password === password) {
-            const token = Auth.tokenize(data[0]._id);
+            const token = Auth.tokenize(user[0]._id);
+            console.log(token);
             res.setHeader('Authorization', token);
-            const response = Response.success("Token Generated. Expires in 1hr", null, "hello", 1);
+            const response = Response.success("Token Generated. Expires in 1hr", null, token, 1);
             res.status(200).json(response);
         }
         else {
