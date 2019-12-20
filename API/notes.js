@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const Auth = require('../auth');
 
 const {
     getNote,
@@ -8,14 +9,14 @@ const {
     removeNote
 } = require('../controllers/notes.controller');
 
-router.get('/', getNotes);
+router.get('/', Auth.audit, getNotes);
 
-router.get('/:id', getNote);
+router.get('/:id', Auth.audit, getNote);
 
-router.post('/add', addNote);
+router.post('/add', Auth.audit, addNote);
 
-router.patch('/update/:id', updateNote);
+router.patch('/update/:id', Auth.audit, updateNote);
 
-router.delete('/remove/:id', removeNote);
+router.delete('/remove/:id', Auth.audit, removeNote);
 
 module.exports = router; 

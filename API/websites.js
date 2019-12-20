@@ -9,9 +9,9 @@ const {
     removeWebsite
 } = require('../controllers/websites.controller');
 
-router.get('/:id', Auth.audit, getWebsites);
+router.get('/', Auth.audit, getWebsites);
 
-router.get('/website/:id', Auth.audit, getWebsite);
+router.get('/:id', Auth.audit, getWebsite);
 
 router.post('/add', Auth.audit, addWebsite);
 
