@@ -4,6 +4,11 @@ const cors = require('cors');
 const { PORT, baseUrlStr } = require('./config');
 const DBConnector = require('./db')
 
+/**
+ * @file app.js is the root file for this API
+ * @author Gonzales Gustavo
+ */
+
 async function main() {
 
     // Config

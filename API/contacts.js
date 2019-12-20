@@ -9,6 +9,7 @@ const {
     removeContact
 } = require('../controllers/contacts.controller');
 
+
 router.get('/', Auth.audit, getContacts);
 
 router.get('/:id', Auth.audit, getContact);

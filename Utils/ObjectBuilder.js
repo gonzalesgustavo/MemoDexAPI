@@ -1,13 +1,25 @@
+/**
+ * Class for parsing and unpacking Results. Filter Class for database results.
+ */
 class ObjBuilder {
-    parse(data) {
+    /**
+     * Loops through the results coming from the Response see {@link ResponseBuilder}
+     * @param {Array} data Array of results containing elements that should not be returned to the client
+     * @returns {object}
+     */
+    parse(resData) {
         let results = [];
-        data.forEach((wbs, idx) => {
+        resData.forEach((wbs, idx) => {
             let unpacked = this.unpack(wbs.toJSON());
             results.push(unpacked);
         })
         return results;
     }
-
+    /**
+     * Filters out unnecessary information and Unpacks the objects into a new array.
+     * @param {Object} data Array of results containing elements that should not be returned to the client
+     * @returns {Object}
+     */
     unpack(data) {
         let str = '';
         for (let i in data) {
