@@ -43,7 +43,10 @@ To-Do:
     [ x ] Setup Models
     [ x ] Link models to controllers
     [ x ] Setup responses
-    [  ] Test routes
+    [ x ] Add JWT
+    [ x ] Link posts to Users
+    [ x ] Test routes
+    [  ] Document API
     [  ] Add comments
 
 mongo db container id:
