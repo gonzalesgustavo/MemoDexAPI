@@ -51,3 +51,20 @@ mongo db container id:
 
 test data ids:
 5df7ed5ac9914e09ef56aeb3
+
+const token = sign({ _id: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "1h"
+    });
+    res.header("authorization", token);
+
+    module.exports = (req, res, next) => {
+    const token = req.header("authorization");
+    if (!token) return res.status(401).send("Accesss Denied!");
+    try {
+        const verified = verify(token, config.jwtSecret);
+        req.user = verified;
+        next();
+    } catch (error) {
+        return res.status(400).send("Invalid Token");
+    }
+};

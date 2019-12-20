@@ -11,11 +11,13 @@ const UserSchema = new Schema({
         type: String,
         min: 10,
         required: true,
-        match: /^[A-Za-z0-9]+@[A-Za-z0-9]+\.[A-Za-z0-9]+$/
+        unique: true,
+        match: /^[A-Za-z0-9][0-9\.\-\_\/+@[A-Za-z0-9]+\.[A-Za-z0-9]+$/
     },
     username: {
         type: String,
         required: true,
+        unique: true,
         min: 5
     },
     password: {

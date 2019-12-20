@@ -9,16 +9,16 @@ class Response {
             resultCount: !success ? null : res.length,
             message: msg,
             status,
-            results: res
+            results: res || token
         }
     }
 }
 
 
 module.exports = class ResponseBuilder {
-    static success(message, data, amount = 10) {
+    static success(message, data, token, amount = 10) {
         let parser = new ObjBulder();
-        let results = parser.parse(data);
+        let results = !data ? token : parser.parse(data);
         return Response.build(true, message, 200, results);
     }
     static failed(error, statusCode = 404, message = generalErrorMessage) {

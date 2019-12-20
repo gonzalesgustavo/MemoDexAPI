@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const Auth = require('../auth');
 
 const {
     getWebsite,
@@ -8,14 +9,14 @@ const {
     removeWebsite
 } = require('../controllers/websites.controller');
 
-router.get('/', getWebsites);
+router.get('/:id', Auth.audit, getWebsites);
 
-router.get('/:id', getWebsite);
+router.get('/website/:id', Auth.audit, getWebsite);
 
-router.post('/add', addWebsite);
+router.post('/add', Auth.audit, addWebsite);
 
-router.patch('/update/:id', updateWebsite);
+router.patch('/update/:id', Auth.audit, updateWebsite);
 
-router.delete('/remove/:id', removeWebsite);
+router.delete('/remove/:id', Auth.audit, removeWebsite);
 
 module.exports = router;

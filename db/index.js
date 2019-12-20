@@ -9,6 +9,7 @@ module.exports = class DBConnector {
             mongoose.set('useFindAndModify', false)
             //connect to database
             await mongoose.connect(mongoConStr, {
+                useCreateIndex: true,
                 useNewUrlParser: true,
                 useUnifiedTopology: true,
 
